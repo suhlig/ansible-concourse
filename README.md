@@ -162,7 +162,8 @@ Unsupported. Do it yer dang self by supplying `concourse web` command options wi
 * `concourse_worker_binary_mode`: Optional. The file mode of the worker launcher, land, and retire scripts.
 * `concourse_worker_land_on_stop`: Optional. Default: "no". Run `concourse land-worker` upon stopping the service.
 * `concourse_worker_retire_on_stop`: Optional. Default: "yes". Run `concourse retire-worker` upon stopping the service.
-* `concourse_work_dir`: Optional. The directory in which the worker does work.
+* `concourse_work_dir`: Required. The temporary directory in which the worker does work.
+* `concourse_work_dir_size`: Required. The size of the temporary directory in which the worker does work.
 * `concourse_tsa_public_key_path`: Optional. The path to the tsa public key file.
 * `concourse_tsa_worker_key_path`: Optional. The path to the worker private key file.
 * `concourse_tsa_host`: Required. The value of the `--tsa-host` option.

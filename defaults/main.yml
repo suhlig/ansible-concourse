@@ -103,6 +103,7 @@ concourse_worker_retire_path: "{{ concourse_bin_dir }}/concourse-retire-worker"
 concourse_worker_land_on_stop: no
 concourse_worker_retire_on_stop: yes
 concourse_work_dir: "{{ concourse_install_dir }}/work"
+concourse_work_dir_size: 50G
 concourse_tsa_public_key_path: "{{ concourse_etc_dir }}/host_key.pub"
 concourse_tsa_worker_key_path: "{{ concourse_etc_dir }}/worker_key"
 #concourse_tsa_host:

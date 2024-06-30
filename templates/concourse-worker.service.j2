@@ -11,6 +11,7 @@ TasksMax=infinity
 LimitNOFILE=infinity
 LimitMEMLOCK=infinity
 Restart=on-failure
+ExecStartPre=/bin/mkdir -p "{{ concourse_work_dir }}"
 ExecStart={{ concourse_worker_launcher_path }}
 {% if concourse_worker_land_on_stop %}
 ExecStop={{ concourse_worker_land_path }}
@@ -19,6 +20,7 @@ ExecStop={{ concourse_worker_retire_path }}
 {% endif %}
 ExecReload=/bin/kill -HUP $MAINPID
 KillSignal=SIGTERM
+TemporaryFileSystem="{{ concourse_work_dir }}":size="{{ concourse_work_dir_size }}"
 
 [Install]
 WantedBy=multi-user.target

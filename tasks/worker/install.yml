@@ -1,13 +1,4 @@
 ---
-- name: create work directory
-  file:
-    path: "{{ concourse_work_dir }}"
-    state: directory
-    mode: 0750
-    owner: "{{ concourse_user }}"
-    group: "{{ concourse_group }}"
-  become: yes
-
 - import_tasks: filesystem.yml
   when: concourse_manage_work_volume
 
