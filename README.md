@@ -182,6 +182,18 @@ Unsupported. Do it yer dang self by supplying `concourse web` command options wi
 * `concourse_work_volume_mount_path`: Optional. The directory to which the work volume will be mounted.
 * `concourse_work_volume_mount_opts`: Optional. Work volume mount options.
 
+### Troubleshooting
+
+Workers are using systemd's `TemporaryFileSystem` feature to limit the size of their workdir. This makes inspecting the workdir a bit cumbersome, because it _appears_ to be empty, but it really uses its own mount namespace. Thankfully, `nsenter` helps us to get there.
+
+* Check the size of the workdir:
+
+  ```command
+  $ sudo nsenter --mount --target $(systemctl show --property MainPID --value concourse-worker) -- du -hs /opt/concourse/work
+  ```
+
+  `systemctl show ...` tells us the main process id of the `concourse-worker` service.
+
 ## Example Playbook
 
     - hosts: atc
