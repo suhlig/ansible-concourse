@@ -1,3 +1,5 @@
+> Do not use - I could not make this work reliably.
+
 # ansible-concourse
 
 [![Build Status][travis-image]][travis-url]
